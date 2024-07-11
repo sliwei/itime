@@ -4,8 +4,11 @@ import { UnifiedWebpackPluginV5 } from "weapp-tailwindcss/webpack";
 import devConfig from "./dev";
 import prodConfig from "./prod";
 
+const isBuild = process.env.NODE_ENV === "production";
+const CDN_URL = `https://i.bstu.cn/code/itime/`;
+
 // https://taro-docs.jd.com/docs/next/config#defineconfig-辅助函数
-export default defineConfig(async (merge, { command, mode }) => {
+export default defineConfig(async (merge, {}) => {
   const baseConfig: UserConfigExport = {
     projectName: "taro-240314",
     date: "2024-3-14",
@@ -38,7 +41,8 @@ export default defineConfig(async (merge, { command, mode }) => {
         url: {
           enable: true,
           config: {
-            limit: 1024, // 设定转换尺寸上限
+            limit: isBuild ? 5 : 1024, // 设定转换尺寸上限
+            basePath: isBuild ? CDN_URL : "",
           },
         },
         cssModules: {
@@ -48,6 +52,11 @@ export default defineConfig(async (merge, { command, mode }) => {
             generateScopedName: "[name]__[local]___[hash:base64:5]",
           },
         },
+      },
+      imageUrlLoaderOption: {
+        limit: 10,
+        name: "assets/[name].[hash][ext]",
+        publicPath: isBuild ? CDN_URL : "/",
       },
       webpackChain(chain) {
         chain.resolve.plugin("tsconfig-paths").use(TsconfigPathsPlugin);
@@ -66,7 +75,7 @@ export default defineConfig(async (merge, { command, mode }) => {
       },
     },
     h5: {
-      publicPath: "/",
+      publicPath: isBuild ? CDN_URL : "/",
       staticDirectory: "static",
       output: {
         filename: "js/[name].[hash:8].js",
