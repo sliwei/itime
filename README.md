@@ -1,4 +1,7 @@
 # itime
+
+[![deploy itime](https://github.com/sliwei/itime/actions/workflows/action.yaml/badge.svg)](https://github.com/sliwei/itime/actions/workflows/action.yaml)
+
 时光机
 
 特色: 更新/网络检测/手机号授权/各种授权函数/分享/自定义Navbar/完善的用户权限流程/权限组件与函数/tailwindcss/react-use/jotai/丰富utils
