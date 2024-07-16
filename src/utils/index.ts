@@ -335,3 +335,24 @@ export const sleep = (time: number = 800) => {
     }, time)
   );
 };
+
+// isH5
+export const isH5 = process.env.TARO_ENV === "h5";
+
+// isWx
+export const isWx = process.env.TARO_ENV === "weapp";
+
+// 获取url参数
+export const getQuery = (name: string) => {
+  const search = window.location.href.split("?")[1];
+  if (!search) return "";
+  return (
+    search
+      .split("&")
+      .map((item) => item.split("="))
+      .reduce((acc, [key, value]) => {
+        acc[key] = value;
+        return acc;
+      }, {})[name] || ""
+  );
+};

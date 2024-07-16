@@ -11,7 +11,7 @@ interface Props {
 
 export default function Index({
   state = true,
-  time = 2000,
+  time = 800,
   scale = 95,
   ...restProps
 }: Props) {

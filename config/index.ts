@@ -99,6 +99,23 @@ export default defineConfig(async (merge, {}) => {
           },
         },
       },
+      imageUrlLoaderOption: {
+        limit: 10,
+        name: "assets/[name].[hash][ext]",
+        publicPath: isBuild ? CDN_URL : "/",
+      },
+      devServer: {
+        port: 10086,
+        proxy: {
+          "/itime_api": {
+            target: "https://api.bstu.cn",
+            pathRewrite: {
+              "^/itime_api": "",
+            },
+            changeOrigin: true,
+          },
+        },
+      },
       webpackChain(chain) {
         chain.resolve.plugin("tsconfig-paths").use(TsconfigPathsPlugin);
       },

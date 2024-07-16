@@ -1,15 +1,11 @@
 import { PropsWithChildren } from "react";
-import Taro, { useDidShow, useLaunch } from "@tarojs/taro";
-import { autoLogin, updateWeapp } from "./utils";
-import { useSetAtom } from "jotai";
-import { authorityState } from "./store/authority";
-import { userinfoState } from "./store/global";
+import { useDidShow, useLaunch } from "@tarojs/taro";
+import { Provider } from "jotai";
+import { myStore } from "./store/global";
+import AuthorityCheck from "./components/AuthorityCheck";
 import "./app.less";
 
 function App({ children }: PropsWithChildren<any>) {
-  const setAuthority = useSetAtom(authorityState);
-  const setUserinfo = useSetAtom(userinfoState);
-
   useLaunch(() => {
     console.log("App launched.");
   });
@@ -49,7 +45,12 @@ function App({ children }: PropsWithChildren<any>) {
   });
 
   // children 是将要会渲染的页面
-  return children;
+  return (
+    <Provider store={myStore}>
+      <AuthorityCheck />
+      {children}
+    </Provider>
+  );
 }
 
 export default App;

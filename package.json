@@ -59,12 +59,15 @@
     "@tarojs/runtime": "3.6.24",
     "@tarojs/shared": "3.6.24",
     "@tarojs/taro": "3.6.24",
+    "crypto-js": "^4.2.0",
     "dayjs": "^1.11.10",
     "framer-motion": "^11.3.1",
     "jotai": "^2.7.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-use": "^17.5.0"
+    "react-toastify": "^10.0.5",
+    "react-use": "^17.5.0",
+    "yet-another-react-lightbox": "^3.21.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.0",
@@ -76,6 +79,7 @@
     "@tarojs/taro-loader": "3.6.24",
     "@tarojs/test-utils-react": "^0.1.1",
     "@tarojs/webpack5-runner": "3.6.24",
+    "@types/crypto-js": "^4.2.2",
     "@types/jest": "^29.3.1",
     "@types/node": "^18.15.11",
     "@types/react": "^18.0.0",
