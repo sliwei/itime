@@ -114,6 +114,13 @@ export default defineConfig(async (merge, {}) => {
             },
             changeOrigin: true,
           },
+          "/blog_api": {
+            target: "https://api.bstu.cn",
+            pathRewrite: {
+              "^/blog_api": "",
+            },
+            changeOrigin: true,
+          },
         },
       },
       webpackChain(chain) {

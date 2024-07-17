@@ -62,7 +62,7 @@ export default function Index() {
   const [open, setOpen] = useAtom(openState);
   console.log(isLock, open)
   return (
-    <div className="h-full">
+    <div className="h-full relative">
       <div className="background absolute z-0">
         <span></span>
         <span></span>

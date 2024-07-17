@@ -64,11 +64,40 @@ class AppRequest {
       });
     });
   }
+  uploadFile(options: Taro.uploadFile.Option) {
+    // 判断url路径是否完整
+    let url: string;
+    if (options.url.includes(this.BASE_URL)) {
+      url = options.url;
+    } else {
+      url = this.BASE_URL + options.url;
+    }
+
+    // 添加拦截器
+    Taro.addInterceptor(this.interceptor);
+    return new Promise((resolve, reject) => {
+      Taro.uploadFile({
+        timeout: this.TIME_OUT,
+        ...options,
+        url,
+        success(res) {
+          console.log(res.data);
+          resolve(JSON.parse(res.data));
+        },
+        fail(err) {
+          reject(err);
+        },
+      });
+    });
+  }
   get<T = Res>(options: Taro.request.Option) {
     return this.request<T>({ ...options, method: "GET" });
   }
   post<T = Res>(options: Taro.request.Option) {
     return this.request<T>({ ...options, method: "POST" });
+  }
+  upload(options: Taro.uploadFile.Option) {
+    return this.uploadFile({ ...options });
   }
   delete<T = Res>(options: Taro.request.Option) {
     return this.request<T>({ ...options, method: "DELETE" });

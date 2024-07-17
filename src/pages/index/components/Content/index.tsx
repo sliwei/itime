@@ -18,6 +18,9 @@ import Video from "yet-another-react-lightbox/plugins/video";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/plugins/captions.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
+import { useAtomValue, useSetAtom } from "jotai";
+import { updateListState, Record, lastRecordState } from "@/store/global";
+import useGetState from "@/hooks/useGetState";
 
 // {
 //   type: "video" as const,
@@ -37,29 +40,35 @@ import "yet-another-react-lightbox/plugins/thumbnails.css";
 // },
 
 export default function Index() {
-  const [page, setPage] = useState(1);
+  const [page, setPage, getPage] = useGetState(1);
+  const setLastRecord = useSetAtom(lastRecordState);
+  const updateList = useAtomValue(updateListState);
   const [advancedExampleOpen, setAdvancedExampleOpen] = useState(false);
   const [advancedSlides, setAdvancedSlides] = useState([]);
   console.log(advancedExampleOpen);
+
   useEffect(() => {
+    setPage(1);
     recordFindAllFetch();
-  }, []);
+  }, [updateList]);
 
   // 登录密钥
   const [recordFindAllState, recordFindAllFetch] = useAsyncFn(async () => {
+    const p = getPage();
     const res = await recordFindAll({
-      page,
-      size: 10,
+      page: p,
+      size: 100,
       order: [["etime", "DESC"]],
     });
     console.log(res);
     if (res.code !== 0) {
       return "";
     }
+    if (p === 1 && res.data.list.length > 0) {
+      setLastRecord(res.data.list[0]);
+    }
     return res.data;
-  }, [page]);
-
-  console.log("recordFindAllState", recordFindAllState);
+  }, []);
 
   return (
     <>
@@ -70,7 +79,7 @@ export default function Index() {
       >
         <div className="absolute w-[2px] h-[88%] bg-[#aaa] left-[20px]"></div>
         <div className="absolute w-[2px] h-[88%] bg-[#aaa] left-[20px] origin-center rotate-1"></div>
-        {recordFindAllState.value?.list?.map((v, i) => (
+        {recordFindAllState.value?.list?.map((v: Record, i) => (
           <div key={v.id} className="py-[10px] text-[30px]">
             {/* 时间 */}
             <div className="flex justify-start items-center">
