@@ -60,10 +60,11 @@ export const defAnimate = {
 export default function Index() {
   const isLock = useAtomValue(isLockState);
   const [open, setOpen] = useAtom(openState);
-  console.log(isLock, open)
+  console.log(isLock, open);
   return (
-    <div className="h-full relative">
+    <div style={{ fontFamily: "HYYouYuan-65W" }}>
       <div className="background absolute z-0">
+        {/* <span></span>
         <span></span>
         <span></span>
         <span></span>
@@ -82,8 +83,7 @@ export default function Index() {
         <span></span>
         <span></span>
         <span></span>
-        <span></span>
-        <span></span>
+        <span></span> */}
       </div>
       <AnimatePresence mode="wait" initial>
         {isLock === 1 ? <Head key="Head" /> : null}
@@ -96,7 +96,7 @@ export default function Index() {
             {...fullAnimate2}
             className="fixed z-20 bottom-[20px] w-full left-0 h-[100px]"
           >
-            <div className="w-[80%] h-full rounded-full bg-[#f38181] flex justify-evenly m-auto">
+            <div className="w-[80%] h-full rounded-full bg-[#f3818150] backdrop-blur-xl flex justify-evenly m-auto">
               <div className="w-[60px] h-full rounded-full flex_center">
                 <img
                   onClick={() => setOpen(0)}

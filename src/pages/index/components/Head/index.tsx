@@ -35,31 +35,21 @@ export default function Index() {
         className="fixed w-full h-full top-0 z-0 bg-repeat"
       >
         <div className="relative z-10 p-[20px] text-[#f38181]">
-          <div className="text-[60px]">
-            电风扇<span className="text-[40px]">(电动阀)</span>
+          <div className="text-[50px]">
+            沫沫<span className="text-[30px] text-[#666]">(Happy泡沫)</span>
           </div>
-          <div className="">
-            宝宝
-            <img className="w-[40px] h-[40px]" src={Numbers[1]} alt="" />
-            岁
-            <img className="w-[40px] h-[40px]" src={Numbers[2]} alt="" />
-            <img className="w-[40px] h-[40px]" src={Numbers[6]} alt="" />
-            天
-            <img className="w-[40px] h-[40px]" src={Numbers[1]} alt="" />
-            <img className="w-[40px] h-[40px]" src={Numbers[2]} alt="" />
-            小时辣
+          <div className="text-[#666] text-[24px]">
+            宝宝 <span className="text-[#f38181] text-[40px]">2</span> 岁{" "}
+            <span className="text-[#f38181] text-[40px]">26</span> 天{" "}
+            <span className="text-[#f38181] text-[40px]">12</span> 小时辣
           </div>
-          <div className="">
-            距
-            <img className="w-[40px] h-[40px]" src={Numbers[2]} alt="" />
-            岁还有
-            <img className="w-[40px] h-[40px]" src={Numbers[1]} alt="" />
-            <img className="w-[40px] h-[40px]" src={Numbers[6]} alt="" />
-            <img className="w-[40px] h-[40px]" src={Numbers[2]} alt="" />天
+          <div className="text-[#666] text-[24px]">
+            距 <span className="text-[#f38181] text-[40px]">2</span> 岁还有{" "}
+            <span className="text-[#f38181] text-[40px]">162</span> 天
           </div>
 
-          <div className="absolute right-[30px] top-[30px] rounded-full w-[120px] h-[120px]">
-            <div className="absolute w-full h-full rounded-full border-[2px] border-[#fff] border-solid left-0 top-0 skew-x-1 origin-top-left rotate-1"></div>
+          <div className="absolute right-[20px] top-[20px] rounded-full w-[120px] h-[120px]">
+            {/* <div className="absolute w-full h-full rounded-full border-[2px] border-[#fff] border-solid left-0 top-0 skew-x-1 origin-top-left rotate-1"></div> */}
             <div className="rounded-full w-full h-full overflow-hidden">
               <img className="w-full h-full" src={headImg} alt="" />
             </div>

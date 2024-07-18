@@ -59,6 +59,7 @@
     "@tarojs/runtime": "3.6.24",
     "@tarojs/shared": "3.6.24",
     "@tarojs/taro": "3.6.24",
+    "axios": "^1.7.2",
     "crypto-js": "^4.2.0",
     "dayjs": "^1.11.10",
     "framer-motion": "^11.3.1",

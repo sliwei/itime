@@ -1,5 +1,6 @@
 import { isH5 } from "@/utils";
 import appRequest from "@/utils/request";
+import axios from "axios";
 
 const BASE_URL = isH5 ? "/blog_api" : process.env.TARO_APP_API_URL;
 
@@ -11,12 +12,10 @@ export const getJson = ({ url }) => {
 /**
  * lw 上传
  */
-export const upload = (data, name) => {
-  return appRequest.upload({
-    url: `${BASE_URL}/blog/manage/common/upload`,
-    formData: data,
-    fileName: name,
-    filePath: name,
-    name: "file",
+export const upload = (data) => {
+  return axios.post(`${BASE_URL}/blog/manage/common/upload`, data, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
   });
 };

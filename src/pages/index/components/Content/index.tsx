@@ -75,36 +75,41 @@ export default function Index() {
       {/* 内容 */}
       <motion.div
         {...fullAnimate}
-        className="relative z-10 bg-white rounded-[10px] overflow-hidden shadow-yellow-600 m-[10px] p-[10px]"
+        className="relative z-10 bg-white rounded-[10px] overflow-hidden shadow-yellow-600 m-[20px] p-[20px] box-border"
       >
-        <div className="absolute w-[2px] h-[88%] bg-[#aaa] left-[20px]"></div>
-        <div className="absolute w-[2px] h-[88%] bg-[#aaa] left-[20px] origin-center rotate-1"></div>
+        <div className="absolute w-[2px] h-[98%] bg-[#fae3d9] left-[31px] top-[1%]"></div>
+        {/* <div className="absolute w-[2px] h-[88%] bg-[#aaa] left-[20px] origin-center rotate-1"></div> */}
         {recordFindAllState.value?.list?.map((v: Record, i) => (
           <div key={v.id} className="py-[10px] text-[30px]">
             {/* 时间 */}
             <div className="flex justify-start items-center">
-              <div className="bg-[#f38181] min-h-[20px] min-w-[20px] px-[10px] ml-[-10px] relative flex_center flex-col">
-                <div className="absolute w-full h-full border-[2px] border-[#aaa] border-solid left-0 top-0 skew-x-2 origin-top-left rotate-1"></div>
-                {i === 0 ? (
-                  <p className="leading-[1]">{dayjs(v.etime).format("MM月")}</p>
+              <div
+                className={`
+              h-[20px] w-[20px] rounded-full ml-[2px] border-[2px] border-[#fae3d9] box-border border-solid relative flex_center flex-col
+              ${i === 0 ? "bg-[#f38181]" : "bg-[#fff]"}
+              `}
+              >
+                {/* <div className="absolute w-full h-full border-[2px] border-[#aaa] border-solid left-0 top-0 skew-x-2 origin-top-left rotate-1"></div> */}
+                {i === -1 ? (
+                  <p className="leading-[1]">{dayjs(v.etime).format("M月")}</p>
                 ) : null}
-                {i === 0 ? (
-                  <p className="leading-[1]">{dayjs(v.etime).format("DD日")}</p>
+                {i === -1 ? (
+                  <p className="leading-[1]">{dayjs(v.etime).format("D")}</p>
                 ) : null}
               </div>
-              {i === 0 ? (
+              {i === -1 ? (
                 <div className="ml-[10px]">
                   {dayjs(v.etime).format("HH时mm分ss秒")}
                 </div>
               ) : (
-                <div className="ml-[10px]">
+                <div className="ml-[10px] text-[24px] text-[#666]">
                   {" "}
-                  {dayjs(v.etime).format("MM月DD日HH时mm分ss秒")}
+                  {dayjs(v.etime).format("M月D日 H:m")}
                 </div>
               )}
 
-              <div className="flex-1 flex justify-end items-center pl-[40px] info_bg rounded-tr-[50px]">
-                <img className="w-[30px] h-[30px]" src={graphImg} alt="" />
+              <div className="flex-1 flex justify-end items-center pr-[5px] info_bg text-[24px] text-[#666]">
+                {/* <img className="w-[20px] h-[20px]" src={graphImg} alt="" /> */}
                 <div>
                   {v.weight}kg,{v.height}cm
                 </div>
@@ -142,9 +147,9 @@ export default function Index() {
                     );
                     setAdvancedExampleOpen(true);
                   }}
-                  className="w-[210px] h-[140px] border-[2px] border-[#aaa] border-solid rounded-[20px] mr-[4px] mb-[4px] relative"
+                  className="w-[210px] h-[140px] overflow-hidden rounded-[10px] mr-[4px] mb-[4px] relative shadow-xl"
                 >
-                  <div className="absolute w-full h-full border-[2px] border-[#aaa] border-solid left-0 top-0 skew-x-2 origin-top-left rotate-1"></div>
+                  {/* <div className="absolute w-full h-full border-[2px] border-[#aaa] border-solid left-0 top-0 skew-x-2 origin-top-left rotate-1"></div> */}
                   <img
                     className="w-full h-full object-cover"
                     src={media}
@@ -154,10 +159,16 @@ export default function Index() {
               ))}
             </div>
             {/* 地址 */}
-            <div className="text-[#666] text-[18px] leading-[1] pl-[40px] my-[20px] flex justify-start items-center">
-              <img className="w-[30px] h-[30px]" src={localImg} alt="" />
-              {v.address}
-            </div>
+            {v.address ? (
+              <div className="text-[#666] text-[18px] leading-[1] pl-[40px] my-[20px] flex justify-start items-center">
+                {/* <img
+                className="w-[20px] h-[20px] mr-[5px] mt-[-5px]"
+                src={localImg}
+                alt=""
+              /> */}
+                {v.address}
+              </div>
+            ) : null}
           </div>
         ))}
       </motion.div>
