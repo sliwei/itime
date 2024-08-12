@@ -23,6 +23,7 @@ import { recordCreate } from "@/api/record";
 import { sleep } from "@/utils";
 import { Slide, toast } from "react-toastify";
 import { upload } from "@/api/global";
+import AMapComponent from "@/components/MapWithLocation";
 
 dayjs.locale("zh-cn");
 
@@ -257,7 +258,9 @@ export default function Index() {
           ></div>
           <div className="absolute z-10 bg-white w-full flex justify-end items-center flex-col py-[40px]">
             <div className="mb-[20px]">位置</div>
-            <div>地图</div>
+            <div className="w-full h-[850px]">
+            <AMapComponent />
+            </div>
             <div className="w-full flex justify-evenly items-center mt-[20px]">
               <div
                 className="anim_btn text-[40px] mb-[20px] leading-none"
