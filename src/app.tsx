@@ -1,14 +1,14 @@
-import { PropsWithChildren } from "react";
-import { useDidShow, useLaunch } from "@tarojs/taro";
-import { Provider } from "jotai";
-import { myStore } from "./store/global";
-import AuthorityCheck from "./components/AuthorityCheck";
-import "./app.less";
+import { PropsWithChildren } from 'react'
+import { useDidShow, useLaunch } from '@tarojs/taro'
+import { Provider } from 'jotai'
+import { myStore } from './store/global'
+import AuthorityCheck from './components/AuthorityCheck'
+import './app.less'
 
 function App({ children }: PropsWithChildren<any>) {
   useLaunch(() => {
-    console.log("App launched.");
-  });
+    console.log('App launched.')
+  })
 
   useDidShow(() => {
     // 登陆
@@ -42,7 +42,7 @@ function App({ children }: PropsWithChildren<any>) {
     //     });
     //   }
     // });
-  });
+  })
 
   // children 是将要会渲染的页面
   return (
@@ -50,7 +50,7 @@ function App({ children }: PropsWithChildren<any>) {
       <AuthorityCheck />
       {children}
     </Provider>
-  );
+  )
 }
 
-export default App;
+export default App

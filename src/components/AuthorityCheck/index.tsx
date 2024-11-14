@@ -1,19 +1,19 @@
-import { findAuthority } from "@/api/record";
-import { isLockState } from "@/store/global";
-import { useDidShow, useLaunch } from "@tarojs/taro";
-import { useSetAtom } from "jotai";
+import { findAuthority } from '@/api/record'
+import { isLockState } from '@/store/global'
+import { useDidShow, useLaunch } from '@tarojs/taro'
+import { useSetAtom } from 'jotai'
 
 export default function Index() {
-  const setIsLock = useSetAtom(isLockState);
+  const setIsLock = useSetAtom(isLockState)
 
   useLaunch(() => {
-    console.log("App launched.");
-  });
+    console.log('App launched.')
+  })
 
   useDidShow(() => {
     findAuthority().then((res) => {
-      setIsLock(res.code === 0 ? 1 : 2);
-    });
+      setIsLock(res.code === 0 ? 1 : 2)
+    })
     // 登陆
     // autoLogin().then((res) => {
     //   console.log("autoLogin", res);
@@ -45,8 +45,8 @@ export default function Index() {
     //     });
     //   }
     // });
-  });
+  })
 
   // children 是将要会渲染的页面
-  return null;
+  return null
 }

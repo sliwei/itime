@@ -1,12 +1,12 @@
 export default defineAppConfig({
-  lazyCodeLoading: "requiredComponents",
-  pages: ["pages/index/index", "pages/my/index"],
+  lazyCodeLoading: 'requiredComponents',
+  pages: ['pages/index/index', 'pages/my/index', 'pages/tools/index'],
   window: {
-    backgroundTextStyle: "light",
-    navigationBarBackgroundColor: "#fff",
-    navigationBarTitleText: "WeChat",
-    navigationBarTextStyle: "black",
-  },
+    backgroundTextStyle: 'light',
+    navigationBarBackgroundColor: '#fff',
+    navigationBarTitleText: 'WeChat',
+    navigationBarTextStyle: 'black'
+  }
   // tabBar: {
   //   custom: true,
   //   list: [
@@ -20,4 +20,4 @@ export default defineAppConfig({
   //     },
   //   ],
   // },
-});
+})
