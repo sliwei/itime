@@ -63,7 +63,7 @@ export default function Index() {
 
   useUpdateEffect(() => {
     oper()
-  }, [trim1, trim2, oldval, comma1, comma2])
+  }, [deduplication, trim1, trim2, oldval, comma1, comma2])
 
   return (
     <div className="w-screen h-screen">
