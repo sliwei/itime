@@ -11,6 +11,7 @@ export default function Index() {
   const [trim2, setTrim2] = useState<boolean>(false)
   const [comma1, setComma1] = useState<boolean>(false)
   const [comma2, setComma2] = useState<boolean>(false)
+  const [deduplication, setDeduplication] = useState<boolean>(true)
 
   const change = (e: any) => {
     setOldval(e.target.value)
@@ -49,6 +50,10 @@ export default function Index() {
         return item
       })
     }
+    if (deduplication) {
+      // 去重
+      data = Array.from(new Set(data))
+    }
     setVal(data.join(','))
     if (data.length && tips) {
       toast.dismiss()
@@ -64,7 +69,10 @@ export default function Index() {
     <div className="w-screen h-screen">
       <div className="h-[50px] flex_center mb-[30px] text-[28px]">
         <div className="mr-[20px]">
-          去首位空格 <input onChange={(e) => setTrim1(e.target.checked)} checked={trim1} className="w-[24px] h-[24px]" type="checkbox" name="" id="" />
+          去重 <input onChange={(e) => setDeduplication(e.target.checked)} checked={deduplication} className="w-[24px] h-[24px]" type="checkbox" name="" id="" />
+        </div>
+        <div className="mr-[20px]">
+          去首尾空格 <input onChange={(e) => setTrim1(e.target.checked)} checked={trim1} className="w-[24px] h-[24px]" type="checkbox" name="" id="" />
         </div>
         <div className="mr-[20px]">
           去所有空格 <input onChange={(e) => setTrim2(e.target.checked)} checked={trim2} className="w-[24px] h-[24px]" type="checkbox" name="" id="" />
